@@ -24,9 +24,8 @@ Alongside applying clustering algorithms to find meaningful segments, I will als
 Can we identify meaningful customer segments based on their purchasing behavior?If so, how can we tailor strategies for each of these segments?
 
 # Data Source
-[UCI Online Retail](https://archive.ics.uci.edu/dataset/352/online+retail)
-
-The dataset is  obtanied from UCI Machine Learning. The data itself is a transactional data from a Uk non-store online retail between 01/12/2010 and 09/12/2011
+Source: [UCI Online Retail](https://archive.ics.uci.edu/dataset/352/online+retail)
+Description:  The dataset is  obtanied from UCI Machine Learning. The data itself is a transactional data from a Uk non-store online retail between 01/12/2010 and 09/12/2011, contains 541909 observations.
 # Method
 # Results 
 # Conclusion
