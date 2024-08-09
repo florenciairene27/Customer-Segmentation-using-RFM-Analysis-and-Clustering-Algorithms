@@ -41,6 +41,7 @@ Description:  The dataset is  obtanied from UCI Machine Learning. The data itsel
 
 # Results
 1. Data Visualization
+   
    ![Geospatial Distribution of Total Purchases](EDA images/total_purchases_by_country.png)
    
 3. Clustering Algorithms
