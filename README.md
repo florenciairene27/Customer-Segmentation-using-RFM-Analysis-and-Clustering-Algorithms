@@ -8,6 +8,8 @@ To address this challenge, I decided to explore the use of unsupervised machine 
 
 By applying multiple algorithms, my goal is to determine which method yields the most meaningful and actionable customer segments. The main challenge in clustering is finding clusters that genuinely reflect the underlying structure of the data, and since no single algorithm works best for all datasets, the choice of method must be tailored to the specific characteristics of the data.
 
+Alongside applying clustering algorithms to find meaningful segments, I will also seek to derive valuable insights through the usual data science pipeline, for example through exploratory data analysis (EDA), and provide insightful recommendations to the business.
+
 # Table of Contents
 - **Business Problems**
 - **Data Source**
