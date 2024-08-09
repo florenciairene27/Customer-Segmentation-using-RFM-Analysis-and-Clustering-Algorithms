@@ -41,8 +41,8 @@ Description:  The dataset is  obtanied from UCI Machine Learning. The data itsel
 
 # Results
 1. Data Visualization
-2. Clustering Algorithms
-3. 
+   
+3. Clustering Algorithms
 
 
 # Conclusion
