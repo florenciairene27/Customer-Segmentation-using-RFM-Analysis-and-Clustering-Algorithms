@@ -21,6 +21,7 @@ Alongside applying clustering algorithms to find meaningful segments, I will als
 
 # Business Problems
 
+Can we identify meaningful customer segments based on their purchasing behavior?If so, how can we tailor strategies for each of these segments?
 
 # Data Source
 # Method
