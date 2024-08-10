@@ -68,11 +68,9 @@ Description:  The dataset is  obtanied from UCI Machine Learning. The data itsel
    7. **Focus on Peak Sales Periods**
       - **Insight**: The highest sales increases are observed in September, October, and November, with November reaching its peak.
       - **Recommendation**: Plan marketing campaigns and promotions to capitalize on these peak months. Consider increasing advertising spend, launching special offers, and enhancing product visibility during these months to maximize revenue.
-
-  3. 
+     
+2. **Clustering Algorithms**
    
-   
-4. Clustering Algorithms
 
 
 # Conclusion
