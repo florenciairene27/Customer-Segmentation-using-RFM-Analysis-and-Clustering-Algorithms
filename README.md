@@ -55,13 +55,24 @@ Description:  The dataset is  obtanied from UCI Machine Learning. The data itsel
    <img src="EDA%20images/sales_trends.png" alt="sales_trends" width="400"/>
 
    **Marketing Insights:**
+   
    1. **Leverages Regional Insights**
    -  **Insights:** UK accounts for the highest percentage of total purchases and has the highest order volume, follow by Netherlands, Ireland and Germany
    -  **Recommendation:** Tailor marketing strategies to focus on high-performing regions, and explore opportunities to enhance market presence in regions with lower sales but potential for growth. To refine this approach, conduct further analysis to understand the types of products that are popular in these high-performing regions
-  2. 
+   3. **Monitor Order Volume Trends**
+      - **Insight**: The size of the points in the visualization represents order volume, highlighting the regions with higher sales volumes.
+      - **Recommendation**: Use order volume insights to identify key markets and allocate resources effectively. Prioritize customer service and inventory management in regions with high order volumes to maintain customer satisfaction and support sustained growth.
+   5. **Address the January Sales Drop**
+      - **Insight**: Sales experience a dramatic decline in January.
+      - **Recommendation**: Investigate the factors contributing to this drop. It might be related to seasonal buying patterns, post-holiday fatigue, or other market dynamics. Consider implementing strategies to boost sales during this period, such as special promotions, product bundles, or targeted marketing campaigns to re-engage customers.
+   7. **Focus on Peak Sales Periods**
+      - **Insight**: The highest sales increases are observed in September, October, and November, with November reaching its peak.
+      - **Recommendation**: Plan marketing campaigns and promotions to capitalize on these peak months. Consider increasing advertising spend, launching special offers, and enhancing product visibility during these months to maximize revenue.
+
+  3. 
    
    
-3. Clustering Algorithms
+4. Clustering Algorithms
 
 
 # Conclusion
