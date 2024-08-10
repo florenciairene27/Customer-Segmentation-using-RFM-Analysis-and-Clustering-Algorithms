@@ -44,6 +44,7 @@ Description:  The dataset is  obtanied from UCI Machine Learning. The data itsel
         
    <img src="EDA%20images/Percentage_of_Total_Purchases.png" alt="Geospatial Distribution of Total Purchases" width="400"/> <img src="EDA%20images/total_purchases_by_country.png" alt="Percentage of Total Purchases by Country" width="400"/>
    
+   <img src="EDA%20images/top 10 item sold.png" alt="top 10 item sold" width="400"/>
    
 
    - **Top **
