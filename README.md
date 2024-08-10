@@ -53,9 +53,12 @@ Description:  The dataset is  obtanied from UCI Machine Learning. The data itsel
    - **Sales Trends**
      
    <img src="EDA%20images/sales_trends.png" alt="sales_trends" width="400"/>
-   
 
-
+   **Marketing Insights:**
+   1. **Leverages Regional Insights**
+   -  **Insights:** UK accounts for the highest percentage of total purchases and has the highest order volume, follow by Netherlands, Ireland and Germany
+   -  **Recommendation:** Tailor marketing strategies to focus on high-performing regions, and explore opportunities to enhance market presence in regions with lower sales but potential for growth. To refine this approach, conduct further analysis to understand the types of products that are popular in these high-performing regions
+  2. 
    
    
 3. Clustering Algorithms
