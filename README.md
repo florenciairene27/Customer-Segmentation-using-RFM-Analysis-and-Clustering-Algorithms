@@ -8,7 +8,7 @@ To address this challenge, I decided to explore the use of unsupervised machine 
 
 By applying multiple algorithms, my goal is to determine which method yields the most meaningful and actionable customer segments. The main challenge in clustering is finding clusters that genuinely reflect the underlying structure of the data, and since no single algorithm works best for all datasets, the choice of method must be tailored to the specific characteristics of the data.
 
-Alongside applying clustering algorithms to find meaningful segments, I will also seek to derive valuable insights through the usual data science pipeline, for example through exploratory data analysis (EDA), and provide insightful recommendations to the business.
+Alongside applying clustering algorithms to find meaningful segments, I will also seek to derive valuable insights through the usual data science pipeline, for example through exploratory data analysis (EDA), and provide how these insights could be applicable directly to the business.
 
 # Table of Contents
 - **Business Problems**
@@ -42,11 +42,14 @@ Description:  The dataset is  obtanied from UCI Machine Learning. The data itsel
 # Results
 1. Data Visualization
    - **Geospatial Distribution of Total Purchases**
+     
+   <img src="EDA%20images/Percentage_of_Total_Purchases.png" alt="Geospatial Distribution of Total Purchases" width="400"/>
    
-   ![Geospatial Distribution of Total Purchases](EDA%20images/Percentage_of_Total_Purchases.png)
 
    - **Percentage of Total Purchases by Country**
    ![Percentage of Total Purchases by Country](EDA%20images/total_purchases_by_country.png)
+
+   - **Top **
 
    
    
