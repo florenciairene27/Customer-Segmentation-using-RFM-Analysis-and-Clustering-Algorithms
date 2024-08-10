@@ -41,27 +41,10 @@ Description:  The dataset is  obtanied from UCI Machine Learning. The data itsel
 
 # Results
 1. Data Visualization
-<div style="display: flex; justify-content: space-between;">
-
-  <div style="flex: 1; text-align: center;">
-    <img src="EDA%20images/Percentage_of_Total_Purchases.png" alt="Geospatial Distribution of Total Purchases" width="300"/>
-    <p><strong>Geospatial Distribution of Total Purchases</strong></p>
-  </div>
-
-  <div style="flex: 1; text-align: center;">
-    <img src="EDA%20images/total_purchases_by_country.png" alt="Percentage of Total Purchases by Country" width="300"/>
-    <p><strong>Percentage of Total Purchases by Country</strong></p>
-  </div>
-
-</div>
-
-   - **Geospatial Distribution of Total Purchases**
-     
-   <img src="EDA%20images/Percentage_of_Total_Purchases.png" alt="Geospatial Distribution of Total Purchases" width="400"/>
+        
+   <img src="EDA%20images/Percentage_of_Total_Purchases.png" alt="Geospatial Distribution of Total Purchases" width="400"/> <img src="EDA%20images/total_purchases_by_country.png" alt="Percentage of Total Purchases by Country" width="400"/>
    
-
-   - **Percentage of Total Purchases by Country**
-   <img src="EDA%20images/total_purchases_by_country.png" alt="Percentage of Total Purchases by Country" width="400"/>
+   
 
    - **Top **
 
