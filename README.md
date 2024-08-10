@@ -40,12 +40,15 @@ Description:  The dataset is  obtanied from UCI Machine Learning. The data itsel
 - Python (for Clustering)
 
 # Results
-1. Data Visualization
-        
+1. **Data Visualization**
+   
+   - **Total Purchases by each Country**
    <img src="EDA%20images/Percentage_of_Total_Purchases.png" alt="Geospatial Distribution of Total Purchases" width="400"/> <img src="EDA%20images/total_purchases_by_country.png" alt="Percentage of Total Purchases by Country" width="400"/>
    
+   - **Top Selling Items**
    <img src="EDA%20images/top 10 item sold.png" alt="top 10 item sold" width="400"/> <img src="EDA%20images/Top 5 Item Sold.png" alt="Top 10 Ttem Sold" width="400"/>
 
+   - **Sales Trends**
    <img src="EDA%20images/sales_trends.png" alt="sales_trends" width="400"/>
    
 
