@@ -29,11 +29,14 @@ Source: [UCI Online Retail](https://archive.ics.uci.edu/dataset/352/online+retai
 Description:  The dataset is  obtanied from UCI Machine Learning. The data itself is a transactional data from a Uk non-store online retail between 01/12/2010 and 09/12/2011, contains 541909 observations.
 
 # Methodology
+
 - Data Preprocessing
 - Exploratory Data Analysis
-- Clustering Algorithms: Kmeans, Hierarchical clustering, Gaussian Mixture Model
+- Clustering Algorithms:
+  - Feature Engineering : RFM Analysis
+  - Kmeans, Hierarchical clustering, Gaussian Mixture Model
 - Evaluation:
-  - Visualization: PCA 
+  - Cluster Visualization: PCA 
 
 # Tech Used 
 - R (for Data preprocessing & Visualization)
