@@ -75,9 +75,14 @@ Description:  The dataset is  obtanied from UCI Machine Learning. The data itsel
 2. **Clustering Algorithms**
    - **Feature Engineering**
      After creating RFM variables, here's the distribution of each of these variables:
-     <img src="EDA%20images/1.jpg" alt="RFM Distribution" width="400"/>
+     <img src="EDA%20images/1.jpg" alt="RFM Distribution" width="600"/>
+
+   - **K-meanS Clustering**
+     Using elbow and silhoutte plots the best segments are 4, here's the visualization of how data divided to 4 segments using k-mean
+     <img src="EDA%20images/2.jpg" alt="RFM Distribution" width="600"/>
      
-     
+   - ****
+
 
 
 # Conclusion
