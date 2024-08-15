@@ -73,7 +73,11 @@ Description:  The dataset is  obtanied from UCI Machine Learning. The data itsel
       - **Recommendation**: Plan marketing campaigns and promotions to capitalize on these peak months. Consider increasing advertising spend, launching special offers, and enhancing product visibility during these months to maximize revenue.
      
 2. **Clustering Algorithms**
-   
+   - **Feature Engineering**
+     After creating RFM variables, here's the distribution of each of these variables:
+     <img src="1.jpg" alt="RFM Distributions" width="400"/>
+     
+     
 
 
 # Conclusion
