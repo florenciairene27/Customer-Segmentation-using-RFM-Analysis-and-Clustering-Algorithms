@@ -75,7 +75,7 @@ Description:  The dataset is  obtanied from UCI Machine Learning. The data itsel
 2. **Clustering Algorithms**
    - **Feature Engineering**
      After creating RFM variables, here's the distribution of each of these variables:
-     <img src="1.jpg" alt="RFM Distributions" width="400"/>
+     <img src="EDA%20images/1.png" alt="RFM Distribution" width="400"/>
      
      
 
