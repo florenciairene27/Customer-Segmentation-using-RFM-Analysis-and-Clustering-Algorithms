@@ -91,7 +91,15 @@ Description:  The dataset is  obtanied from UCI Machine Learning. The data itsel
      Here's the visualization of how hierarchichal clustering divided data into 4 segments
      
      <img src="EDA%20images/3.jpg" alt="RFM Distribution" width="600"/>
+
+   - **Gaussian Mixture Clustering**
+
+     Here's the visualization of how gaussian mixture divided data into 4 segments
+
+     <img src="EDA%20images/4.jpg" alt="RFM Distribution" width="600"/>
      
+     
+
 
 
 
