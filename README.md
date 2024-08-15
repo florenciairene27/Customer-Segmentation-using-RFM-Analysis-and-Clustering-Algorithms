@@ -83,7 +83,7 @@ Description:  The dataset is  obtanied from UCI Machine Learning. The data itsel
      <img src="EDA%20images/2.jpg" alt="RFM Distribution" width="600"/>
      
    - **Hierarchical Clustering**
-     Here's the visualization of how hierarchichal clustering divided data into 4 segments:
+     Here's the visualization of how hierarchichal clustering divided data into 4 segments
      <img src="EDA%20images/3.jpg" alt="RFM Distribution" width="600"/>
      
 
