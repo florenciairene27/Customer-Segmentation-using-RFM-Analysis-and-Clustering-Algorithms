@@ -1,0 +1,384 @@
+---
+title: "Exploratory Data Analysis"
+author: "Florencia Irene"
+format: 
+  html:
+    self-contained: true
+---
+
+# Libraries
+```{r}
+pacman::p_load(readxl,tidyverse, lubridate, sf, rnaturalearth, rnaturalearthdata, countrycode, scales, RColorBrewer,tidytext)
+```
+
+
+# Data Pre-Processing
+
+Let's load the data first 
+
+```{r}
+retail = read_excel('Online Retail.xlsx')
+head(retail)
+```
+
+There are around 25% missing data. Rule of thumb is 5% missing data, so with 25% rate this is a little alarming. Let's try to understand the missing values!
+
+```{r}
+# count total missing values
+sum(is.na(retail))
+```
+
+Here I am trying to see what variables have missing values, which turned out are CustomerID and Description. 
+
+```{r}
+# count missing values in each columns 
+colSums(is.na(retail))
+```
+Interestingly, all the missing values in CustomerID have invoice starting with "5"
+
+```{r}
+retail %>%
+  filter(if_any(CustomerID, is.na))
+```
+
+The missing customerID mostly are from UK and EIRE.
+
+```{r}
+retail %>%
+  filter(if_any(CustomerID, is.na)) %>%
+  group_by(Country) %>%
+  count() %>%
+  arrange(desc(n))
+
+```
+
+Despite the high rate of missing values, the primary focus of this project is on understanding customer segments rather than achieving precise predictions. Therefore, I will remove the missing data. While this might impact the precision of the analysis, it should not significantly affect the overall insights or strategic value of the segmentation.
+
+```{r}
+df<- retail %>%
+  drop_na(CustomerID)
+```
+
+For the descriptions' missing values, I will handle it by removing it for later analysis, as it doesn't really matter because the data set have Stock Code which represents the code for each unique item. 
+
+Now, let's look at the summary of values for each variable. In the summary below, we can see that Quantity and UnitPrice have negative values. For Quantity, negative values make sense as they could represent returned stocks. Negative values for UnitPrice might indicate discounts.
+
+```{r}
+summary(retail)
+```
+Based on the summary below, Regenct Cakestand 3 tier, manual, postage are highly returned item(I assumed).  
+
+```{r}
+df %>%
+  filter(Quantity <= 0) %>%
+  group_by(Description) %>%
+  count() %>%
+  arrange(desc(n))
+
+```
+
+Furthermore, I will remove this negative quantity and unitprice from the dataset as my main focus on this project is to analyze pattern in purchases. 
+
+Let's remove both of them 
+
+```{r}
+df <- df %>%
+  filter(Quantity > 0)
+
+df <- df %>%
+  filter(UnitPrice > 0)
+
+write.csv(df, file = "edited_df.csv", row.names = FALSE)
+```
+
+Now for the Invoice date, we will extract the date only and removes the time. 
+
+```{r}
+df <- df %>%
+  mutate(Date = paste(year(InvoiceDate), "-", month(InvoiceDate),"-" , day(InvoiceDate) ,sep = "")) %>%
+  select(-InvoiceDate)
+```
+
+Now let's do data visualization!
+
+
+# Geogspatial Distribution of Total Purchases
+
+First I am going to make a new column: "Amount", which is the total amount of purchases for each observation and I will calculate total purchases by country. 
+
+```{r}
+#calculating country purchases (total amount of purchases)
+country <- df %>%
+  mutate(Amount = Quantity*UnitPrice)
+
+#sum up the purchases by each country 
+country2 <- country %>%
+  group_by(Country) %>%
+  summarise(TotalAmount = sum(Amount)) %>%
+  arrange(desc(TotalAmount))
+
+country2
+```
+
+I will remove unspecified, as it is not helpful for visualization. 
+
+I decided to use a log transformation for the total purchases visualization because the data is highly skewed. Without this transformation, color differences would be less noticeable. In the visualization below, hot colors indicate regions with higher total purchases.
+
+```{r}
+#removing unspecified 
+country2 <- country2 %>%
+  filter(Country != "Unspecified")
+
+#load world map data 
+world <- ne_countries(scale = "medium", returnclass =  "sf")
+
+#country name corrections 
+corrections <- c(
+  "EIRE" = "Ireland", 
+  "Channel Islands" = "United Kingdom", 
+  "USA" = "United States of America", 
+  "RSA" = "South Africa"
+)
+
+#applying corrections
+country2 <- country2 %>%
+  mutate(Country = recode(Country, !!!corrections)) %>%
+  group_by(Country) %>%
+  summarise(TotalPurchases = sum(TotalAmount)) %>%
+  arrange(desc(TotalPurchases))
+
+#merge with  the dataset
+world_data <- world %>%
+  left_join(country2, by = c("name" = "Country"))
+
+png("total_purchases_by_country.png", width = 800, height = 600, res = 100)
+
+ggplot(data = world_data) +
+  geom_sf(aes(fill = log1p(TotalPurchases)), color = "white")+
+  scale_fill_distiller(palette = "RdYlBu", name = "log(Total Purchases)", labels = label_comma()) +
+  theme_minimal() +
+  labs(title = "Total Purchases by Country",
+       subtitle = "Geospatial distribution of total purchases",
+       caption = "Source: My Data") +
+  theme(legend.position = "bottom",
+        legend.key.width = unit(2, "cm"),
+        legend.text = element_text(size = 10))
+
+dev.off()
+```
+
+# Purchases percentage by country and volume
+
+I also want to visualize the total purchase percentage alongside the order volume. The size of each point represents the volume of orders. I applied a log transformation to the total purchases for the same reason as before—due to skewness. Without this transformation, the distance between the UK and other countries on the graph would be exaggerated.
+
+From the visualization below, we can see that the UK accounts for the highest percentage of total purchases and has the highest order volume, followed by the Netherlands, Ireland, and Germany. 
+
+```{r}
+#calculate total purchases 
+country1 <- df %>%
+  mutate(Amount = Quantity*UnitPrice) %>%
+  group_by(Country) %>%
+  summarise(n = n(), 
+            TotalPurchases = sum(Amount)) %>%
+  mutate(purchase_pct = (TotalPurchases/sum(TotalPurchases))*100) %>%
+  arrange((purchase_pct))
+
+country1
+```
+
+```{r}
+png("Percentage_of_Total_Purchases.png", width = 800, height = 600, res = 100)
+country1 %>%
+  ggplot(aes(x = reorder(Country,log1p(purchase_pct)), y = log1p(purchase_pct))) +
+  geom_point(aes(size = n, colour = factor(purchase_pct), alpha = 0.8))+
+  theme_minimal(base_size =  9)+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1) , legend.position="none")+
+  labs(x="Country", 
+       y = "Log-Transformed Percentage", 
+       title = "Log-Transformed Percentage of Total Purchases by Country")
+dev.off()
+```
+
+# Most Popular Item Sold 
+
+Next, I want to understand and visualize top 10 item sold :
+
+```{r}
+
+# summarizing top 10 item sold 
+retail <- df %>%
+  group_by(Description) %>%
+  summarise(total_quantity = sum(Quantity))%>%
+  arrange(desc(total_quantity)) %>%
+  slice_head(n = 10)
+
+# Visualization
+png("Top 10 item sld.png", width = 400, height = 200, res = 100)
+item %>%
+  ggplot(aes(x = item_sold, y = reorder(Description, item_sold), fill = Description))+
+  geom_col(alpha = 0.5)+
+  geom_text(aes(label = item_sold), 
+            size = 3, 
+            hjust = -0.1, 
+            fontface = "bold")+
+  theme_minimal()+
+  theme(axis.title.y = element_blank(),
+        axis.text.y = element_text(size = 8, margin = margin(r = -20)),
+        legend.position = "none")+
+  labs(x = "Total Item Sold", title = "Top 10 Items Sold")
+dev.off()
+```
+
+Based on the 10 top item sold, I also wanted to understand what kind of 
+```{r}
+# summarizing item sold in each countries
+aggregated_df <- df %>%
+  group_by(Country, Description) %>%
+  summarise(total_quantity = sum(Quantity)) %>%
+  arrange(Country, desc(total_quantity))
+
+# get top 5 description per country  
+top_country_items <- aggregated_df %>%
+  group_by(Country) %>%
+  slice_head(n = 5)
+
+# get top 5 country based on total item sold 
+top_5_country <- aggregated_df %>%
+  group_by(Country) %>%
+  summarise(total = sum(total_quantity)) %>%
+  arrange(desc(total)) %>%
+  slice_head(n = 5)
+
+# 5 to p
+final <- top_country_items %>%
+  filter(Country %in% top_5_country$Country) %>%
+  mutate(Country = factor(Country, levels = top_5_country$Country)) %>%
+  group_by(Country) %>%
+  mutate(Description = factor(Description, levels = unique(Description[order(total_quantity, decreasing = TRUE)]))) %>%
+  arrange(Country, desc(total_quantity))
+
+final
+```
+```{r}
+# reorder the description based on total quantity from within(in each country)
+final <- final %>%
+  mutate(Description = reorder_within(Description, total_quantity, Country))
+
+# visualization
+png("Top 5 Item Sold.png", width = 1400, height = 800, res = 100)
+final %>%
+  ggplot(aes(x = total_quantity, y = Description, fill = Description))+
+  geom_col(alpha = 0.5)+
+  facet_wrap(~Country, scales = "free")+
+  scale_y_reordered()+
+  geom_text(aes(label = total_quantity), 
+            size = 3, 
+            hjust = 1, 
+            fontface = "bold")+
+  theme_minimal()+
+  theme(axis.title.y = element_blank(),
+        axis.text.y = element_text(size = 8, margin = margin(r = -20)),
+        legend.position = "none", 
+        strip.text = element_text(face ='bold'))+
+  labs(title = "Top 5 items sold",
+       subtitle = "by the top 5 Countries with Highest Purchases",
+       caption = "Source: My Data")
+dev.off()
+
+```
+
+
+
+I also want to visualize the top 10 Item sold. So here's the graph below:
+
+  
+```{r}
+ggplot(final_result, aes(x = reorder(Description, item_sold), y = item_sold, fill = Description)) +
+  geom_col() + # Use geom_col() for bar chart
+  facet_wrap(~ Country, scales = 'free_y') + # Create a separate plot for each country
+  theme_minimal() +
+  labs(
+    title = "Top 5 Items Sold per Country",
+    x = "Item Description",
+    y = "Items Sold",
+    fill = "Item Description"
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1), # Rotate x-axis labels if needed
+    legend.position = "bottom"
+  )
+```
+
+
+```{r}
+#summarizing top 10 sold items
+
+
+#visualization 
+#png("top 5 item sold.png", width = 1000, height = 600, res = 100)
+item %>%
+  ggplot(aes(x = item_sold, y = reorder(Description, item_sold), fill = Description))+
+  geom_col(alpha = 0.5)+
+  geom_text(aes(label = item_sold), 
+            size = 3, 
+            hjust = -0.1, 
+            fontface = "bold")+
+  theme_minimal()+
+  theme(axis.title.y = element_blank(),
+        axis.text.y = element_text(size = 8, margin = margin(r = -20)),
+        legend.position = "none")+
+  labs(x = "Total Item Sold", title = "Top 10 Items Sold")
+#dev.off()
+
+```
+
+# Sales Trends
+
+I want to visualize the trend in sales/revenue from December 2010 to December 2011. Based on the graph below, the highest increases in sales are observed in September, October, and November, with November being the peak month. Unfortunately, sales drop dramatically in January.
+
+```{r}
+#Convert the date variable to POSIXct type
+
+png("sales_trends.png", width = 1000, height = 600, res = 100)
+df_date <- df %>%
+  mutate(year_month = as.POSIXct(paste0(year(Date), "-", month(Date), "-01")))
+
+df_date %>%
+  mutate(Amount = Quantity*UnitPrice) %>%
+  group_by(year_month) %>%
+  summarise(total_revenue = sum(Amount)) %>%
+  ggplot(aes(x = year_month, y = total_revenue)) +
+  geom_col(fill = "steelblue", alpha = 0.5)+
+  geom_line(aes(group = 1, color = "Orange"))+
+  scale_y_continuous(labels = label_number(scale = 1, big.mark = ","))+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "none")+
+  labs(y = "Total Revenue", 
+       title = "Total Revenue from December 2010 - December 2011")
+dev.off()
+
+```
+
+Through this data simple visualization, from marketer perspective there are several things we can learn:
+
+1. **Leverage Regional Insights:**
+- **Insight** : UK accounts for the highest percentage of total purchases and has the highest order volume, follow by Netherlands, Ireland and Germany 
+- **Recommendation**: Tailor marketing strategies to focus on high-performing regions, and explore opportunities to enhance market presence in regions with lower sales but potential for growth. To refine this approach, conduct further analysis to understand the types of products that are popular in these high-performing regions
+
+
+2. **Monitor Order Volume Trends**:
+
+- **Insight**: The size of the points in the visualization represents order volume, highlighting the regions with higher sales volumes.
+- **Recommendation**: Use order volume insights to identify key markets and allocate resources effectively. Prioritize customer service and inventory management in regions with high order volumes to maintain customer satisfaction and support sustained growth.
+
+3. **Address the January Sales Drop**:
+
+- **Insight**: Sales experience a dramatic decline in January.
+- **Recommendation**: Investigate the factors contributing to this drop. It might be related to seasonal buying patterns, post-holiday fatigue, or other market dynamics. Consider implementing strategies to boost sales during this period, such as special promotions, product bundles, or targeted marketing campaigns to re-engage customers.
+
+4. **Focus on Peak Sales Periods**:
+
+- **Insight**: The highest sales increases are observed in September, October, and November, with November reaching its peak.
+- **Recommendation**: Plan marketing campaigns and promotions to capitalize on these peak months. Consider increasing advertising spend, launching special offers, and enhancing product visibility during these months to maximize revenue.
+
