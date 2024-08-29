@@ -11,13 +11,13 @@ By applying multiple algorithms, my goal is to determine which method yields the
 Alongside applying clustering algorithms to find meaningful segments, I will also seek to derive valuable insights through the usual data science pipeline, for example through exploratory data analysis (EDA), and provide how these insights could be applicable directly to the business.
 
 # Table of Contents
-- **Business Problems**
-- **Data Source**
-- **Method**
-- **Results**
-- **Conclusion**
-- **Limitations and Recommendations**
-- **How to use the Files**
+- [Business Problems](#business-problems)
+- [Data Source](#data-source)
+- [Method](#method)
+- [Results](#results)
+- [Conclusion](#conclusion)
+- [Limitations and Recommendations](#limitations-and-recommendations)
+- [How to use the Files](#how-to-use-the-files)
 
 # Business Problems
 
