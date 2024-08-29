@@ -145,4 +145,7 @@ These clustering analysis depends on the 3 features selected. Adding other featu
 
 # How to use the Files
 - EDA.html & EDA.qmd : This is exploratory data analysis part, download these files first that you can open it on your browser.
+- k-means.ipynb : Feature engineering and k-means clustering
+- Gaussian.ipynb : Gaussian clustering
+- hierarchichal clustering.ipynb : hierarchichal clustering
 
