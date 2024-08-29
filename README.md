@@ -98,11 +98,12 @@ Description:  The dataset is  obtanied from UCI Machine Learning. The data itsel
 
      <img src="EDA%20images/4.jpg" alt="RFM Distribution" width="600"/>
 
-     Based on the the PCA and 3D visualization, also the clarity of cluster seperation,I decided to move forward with K-means results.Based on the k means, there are 4 segments which can be visualized using boxplots below:
+     Based on the PCA and 3D visualizations, as well as the clarity of cluster separation, I decided to proceed with the K-means algorithm. The K-means results identify 4 distinct segments, which are visualized using boxplots and summarized by their mean values in the table below:
 
-     <img src="EDA%20images/k-means_boxplot.png" alt="k-means_boxplot" width="400"/> 
+     <img src="EDA%20images/k-means_boxplot.png" alt="k-means_boxplot" width="400"/> <img src="EDA%20images/Cluster_table.png" alt="Cluster_table" width="400"/>
+     We can also use percentiles: 25th, 50th (median), and 75th percentiles to understand the distribution of each cluster and the treshold:
      
-     
+     <img src="EDA%20images/percentiles_output.png" alt="percentiles_output" width="400"/>
 
 
 
