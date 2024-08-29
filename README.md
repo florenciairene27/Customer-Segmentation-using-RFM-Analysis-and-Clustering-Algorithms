@@ -13,7 +13,7 @@ Alongside applying clustering algorithms to find meaningful segments, I will als
 # Table of Contents
 - [Business Problems](#business-problems)
 - [Data Source](#data-source)
-- [Method](#method)
+- [Methodolofy](#methodology)
 - [Results](#results)
 - [Conclusion](#conclusion)
 - [Limitations and Recommendations](#limitations-and-recommendations)
