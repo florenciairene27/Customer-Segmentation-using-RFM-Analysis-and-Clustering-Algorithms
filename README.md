@@ -98,7 +98,9 @@ Description:  The dataset is  obtanied from UCI Machine Learning. The data itsel
 
      <img src="EDA%20images/4.jpg" alt="RFM Distribution" width="600"/>
 
-     Based on the visualization in PCA and how the clusters are meaningful or not, I decided to move forward with K-means results. So based on the k means, there are 4 segments which can be visualized using boxplots below:
+     Based on the the PCA and 3D visualization, also the clarity of cluster seperation,I decided to move forward with K-means results.Based on the k means, there are 4 segments which can be visualized using boxplots below:
+
+     <img src="EDA%20images/k-means_boxplot.png" alt="k-means_boxplot" width="400"/> 
      
      
 
