@@ -105,10 +105,16 @@ Description:  The dataset is  obtanied from UCI Machine Learning. The data itsel
      
      <img src="EDA%20images/percentiles_output.png" alt="percentiles_output" width="400"/>
 
-# Conclusion
+# Conclusion & Recommendation
 
 Finally, the conclusion of this analysis is that there 4 segment of customers based on their purchasing behaviour. These 4 segments and marketing strategy for each of the segment:
-
+- **Cluster 0**: High value and frequent customers, but their last purchase was relatively recent.
+  - *Recommendation*: Re-engagement Campaigns
+    
+  - *Action*: Encourage more frequent purchases by sending targeted promotions or incentives, such as limited-time offers or bundle deals. Highlight the benefits of staying active with the brand
+    
+  - *Goal*: Increase purchase frequency and reduce the gap since their last purchase by re-engaging them with appealing offers.
+  
 - **Cluster 1**: Moderate-value customers who have made recent purchases, indicating potential for re-engagement.
   
   - *Recommendation*: Upselling & Cross-Selling
@@ -116,6 +122,24 @@ Finally, the conclusion of this analysis is that there 4 segment of customers ba
   - *Action*: Leverage their recent purchase activity by offering complementary products or upselling to higher-value items. Provide tailored recommendations based on their purchase history.
     
   - *Goal*: Boost average order value and further engage these customers by introducing them to products that align with their recent interests.
+    
+- **Cluster 2**:  Low-value customers with infrequent purchases and long periods of inactivity.
+  
+  - *Recommendation*: Win-Back Campaigns
+    
+  - *Action*: Implement win-back campaigns to re-engage these inactive customers. Consider offering deep discounts, personalized messages, or reactivation incentives to encourage them to return.
+    
+  - *Goal*: Revitalize their interest in the brand and convert them from inactive to active customers by addressing potential reasons for their disengagement.
+
+- **Cluster 3**:  The store most valuable and active group, with high-frequency, high-monetary, and low-recency values, indicating highly engaged and valuable customers.
+  
+  - *Recommendation*: Loyalty Rewards & VIP Programs
+    
+  - *Action*: Offer exclusive rewards, discounts, or VIP programs to maintain their loyalty. Consider creating personalized offers based on their purchasing history to make them feel valued.
+    
+  - *Goal*: Strengthen customer retention by rewarding their frequent and high-value purchases, ensuring they remain engaged with the brand.
+
 # Limitations and Recommendations
+
 # How to use the Files
 
