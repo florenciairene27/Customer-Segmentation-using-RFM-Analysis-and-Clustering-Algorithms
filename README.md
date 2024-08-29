@@ -105,10 +105,17 @@ Description:  The dataset is  obtanied from UCI Machine Learning. The data itsel
      
      <img src="EDA%20images/percentiles_output.png" alt="percentiles_output" width="400"/>
 
-
-
-
 # Conclusion
+
+Finally, the conclusion of this analysis is that there 4 segment of customers based on their purchasing behaviour. These 4 segments and marketing strategy for each of the segment:
+
+- **Cluster 1**: Moderate-value customers who have made recent purchases, indicating potential for re-engagement.
+  
+  - *Recommendation*: Upselling & Cross-Selling
+    
+  - *Action*: Leverage their recent purchase activity by offering complementary products or upselling to higher-value items. Provide tailored recommendations based on their purchase history.
+    
+  - *Goal*: Boost average order value and further engage these customers by introducing them to products that align with their recent interests.
 # Limitations and Recommendations
 # How to use the Files
 
