@@ -107,7 +107,7 @@ Description:  The dataset is  obtanied from UCI Machine Learning. The data itsel
 
 # Conclusion & Recommendation
 
-Finally, the conclusion of this analysis is that there 4 segment of customers based on their purchasing behaviour. These 4 segments and marketing strategy for each of the segment:
+To conclude, this analysis identifies four distinct customer segments based on purchasing behavior. Below are the details of each segment and the corresponding marketing strategies tailored to their characteristics:
 - **Cluster 0**: High value and frequent customers, but their last purchase was relatively recent.
   - *Recommendation*: Re-engagement Campaigns
     
@@ -139,7 +139,9 @@ Finally, the conclusion of this analysis is that there 4 segment of customers ba
     
   - *Goal*: Strengthen customer retention by rewarding their frequent and high-value purchases, ensuring they remain engaged with the brand.
 
-# Limitations and Recommendations
+# Limitations and Recommendations fo future Studies
+
+These clustering analysis depends on the 3 features selected. Adding other features such as demographic can help to gain more comprehensive view of clusters. Adding additional features, such as demographic information or behavioral data, could provide a more comprehensive view of the customer segments and enhance the accuracy of the analysis.
 
 # How to use the Files
 
