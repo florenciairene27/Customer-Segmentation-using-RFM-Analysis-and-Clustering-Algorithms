@@ -141,7 +141,7 @@ To conclude, this analysis identifies four distinct customer segments based on p
 
 # Limitations and Recommendations fo future Studies
 
-These clustering analysis depends on the 3 features selected. Adding other features such as demographic can help to gain more comprehensive view of clusters. Adding additional features, such as demographic information or behavioral data, could provide a more comprehensive view of the customer segments and enhance the accuracy of the analysis.
+These clustering analysis depends on the 3 features selected. Adding additional features, such as demographic information or behavioral data, could provide a more comprehensive view of the customer segments and enhance the accuracy of the analysis.
 
 # How to use the Files
 - EDA.html & EDA.qmd : This is exploratory data analysis part, download these files first that you can open it on your browser.
